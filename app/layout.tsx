@@ -7,14 +7,14 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Genesis | Stop Chasing. Start Closing.",
+  title: "GrowthOp | Stop Chasing. Start Closing.",
   description:
-    "Genesis delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to. Inbound, Outbound, and Hybrid growth engines for SaaS founders.",
+    "GrowthOp delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to. Inbound, Outbound, and Hybrid growth engines for SaaS founders.",
   keywords: ["SaaS", "lead generation", "outbound", "inbound", "growth", "pipeline", "MRR", "ARR"],
   openGraph: {
-    title: "Genesis | Stop Chasing. Start Closing.",
+    title: "GrowthOp | Stop Chasing. Start Closing.",
     description:
-      "Genesis delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to.",
+      "GrowthOp delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to.",
     type: "website",
   },
     generator: 'v0.app'
