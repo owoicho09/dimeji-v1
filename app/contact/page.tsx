@@ -16,62 +16,86 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setError("")
 
-    // Validation
-    if (!formData.company.trim()) {
-      setError("Company name is required")
-      return
-    }
-    if (!formData.email.trim()) {
-      setError("Email is required")
-      return
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError("Please enter a valid email address")
-      return
-    }
-    if (formData.description.length > 250) {
-      setError("Description must be 250 characters or less")
-      return
-    }
+  console.log("🔵 SUBMIT CLICKED")
+  console.log("Form data:", formData)
 
-    setIsSubmitting(true)
-
-    try {
-      const response = await fetch("/api/lead", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          company: formData.company,
-          email: formData.email,
-          description: formData.description,
-          offer_expires: "2025-12-20",
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to submit")
-      }
-
-      // Fire analytics event
-      if (typeof window !== "undefined") {
-        window.dispatchEvent(
-          new CustomEvent("analytics", { detail: { event: "form_submit", company: formData.company } }),
-        )
-      }
-
-      setIsSubmitted(true)
-    } catch {
-      setError("Something went wrong. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
+  // Validation
+  if (!formData.company.trim()) {
+    setError("Company name is required")
+    console.log("❌ Validation failed: no company")
+    return
   }
+  if (!formData.email.trim()) {
+    setError("Email is required")
+    console.log("❌ Validation failed: no email")
+    return
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    setError("Please enter a valid email address")
+    console.log("❌ Validation failed: invalid email format")
+    return
+  }
+  if (formData.description.length > 250) {
+    setError("Description must be 250 characters or less")
+    console.log("❌ Validation failed: description too long")
+    return
+  }
+
+  setIsSubmitting(true)
+  console.log("⏳ Sending POST request...")
+
+  try {
+    const payload = {
+      company: formData.company,
+      email: formData.email,
+      description: formData.description,
+      offer_expires: "2025-12-20",
+    }
+
+    console.log("🔵 Payload sending to backend:", payload)
+
+    const response = await fetch("https://dimeji-agency.onrender.com/api/lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+
+    console.log("🔵 Raw response:", response)
+
+    const responseText = await response.text()
+    console.log("🔵 Response body text:", responseText)
+
+    if (!response.ok) {
+      console.log("❌ Backend returned non-OK status:", response.status)
+      throw new Error("Failed to submit")
+    }
+
+    // Fire analytics event
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("analytics", { detail: { event: "form_submit", company: formData.company } }),
+      )
+      console.log("📈 Analytics event fired")
+    }
+
+    console.log("✅ Success — setting isSubmitted")
+    setIsSubmitted(true)
+
+  } catch (err: any) {
+    console.log("🔥 ERROR in submit handler:", err)
+    setError("Something went wrong. Please try again.")
+
+  } finally {
+    console.log("⏹️ FINALLY block executed — stopping loader")
+    setIsSubmitting(false)
+  }
+}
 
   if (isSubmitted) {
     return (
