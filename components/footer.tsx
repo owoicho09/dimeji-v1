@@ -15,8 +15,7 @@ export function Footer() {
             Contact
           </Link>
           <p className="text-xs text-muted-foreground mt-4">
-            Offer valid until <span className="font-medium">Dec 20</span>
-          </p>
+            ASD </p>
 
           <div className="flex items-center gap-6 text-xs text-muted-foreground">
             <Link href="#" className="hover:text-foreground transition-colors">

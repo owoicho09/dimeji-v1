@@ -207,8 +207,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           </button>
 
           <p className="text-xs text-muted-foreground text-center">
-            Offer valid until <span className="font-medium">Dec 20</span>
-          </p>
+            ASD </p>
         </form>
       </div>
     </main>
