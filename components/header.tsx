@@ -34,7 +34,7 @@ export function Header() {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">G</span>
             </div>
-            <span className="font-semibold text-foreground text-lg">GrowthOp</span>
+            <span className="font-semibold text-foreground text-lg">ASD</span>
           </Link>
 
           {/* Desktop Navigation */}

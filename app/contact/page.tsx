@@ -137,7 +137,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">G</span>
             </div>
-            <span className="font-semibold text-foreground text-lg">GrowthOp</span>
+            <span className="font-semibold text-foreground text-lg">ASD</span>
           </div>
 
           <h1 className="text-3xl font-bold text-foreground mb-2">Let's Talk Growth</h1>
