@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ASD | Stop Chasing. Start Closing.",
     description:
-      "GrowthOp delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to.",
+      "ASD delivers 15+ qualified leads weekly — we source, score, and close the outreach so you don't have to.",
     type: "website",
   },
     generator: 'v0.app'
